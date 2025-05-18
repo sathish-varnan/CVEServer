@@ -1,0 +1,1 @@
+An Express Server that communicates with SAP S4 system to fetch the data to the Angular Application.
