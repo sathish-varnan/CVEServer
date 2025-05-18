@@ -1,0 +1,25 @@
+{
+  "name": "cveportal-server",
+  "version": "1.0.0",
+  "description": "Server for the CVEPortal",
+  "main": "main.js",
+  "scripts": {
+    "build": "tsc --build",
+    "start": "node ./dist/index.js",
+    "dev": "nodemon ./src/index.ts"
+  },
+  "author": "Sathish Varnan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.15.18",
+    "cors": "^2.8.5",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
