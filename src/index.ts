@@ -1,9 +1,12 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
 import { customer } from './routers/router';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app: Express = express();
-const PORT = 3000;
+const PORT = process.env.PORT || '8000';
 
 app.use(cors());
 app.use(express.json());
@@ -11,5 +14,5 @@ app.use(express.json());
 app.use('/customer', customer);
 
 app.listen(PORT, () => {
-    console.log(`Server started listening to port ${PORT}`);
+  console.log(`Server started listening to port ${PORT}`);
 });

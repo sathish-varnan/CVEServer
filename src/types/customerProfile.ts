@@ -5,4 +5,6 @@ export interface CustomerProfile {
     city: string; // ort01
     postalCode: string; // pstlz
     landmark: string; // stras
+    region: string;
+    phone: string;
 }
