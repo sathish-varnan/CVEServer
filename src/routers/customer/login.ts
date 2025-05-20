@@ -15,8 +15,6 @@ function giveBody(id: string, password: string) {
 }
 
 export default async function (request: Request, response: Response): Promise<void> {
-    console.log("CustomerLoginHandler");
-    console.log(request.body);
     const {id, password} = request.body;
     const auth: string = process.env.BASE || '';
     const requestBody = giveBody(id, password);
@@ -33,9 +31,7 @@ export default async function (request: Request, response: Response): Promise<vo
             }
         );
         const result:any = convert.xml2js(SAPresponse.data, { compact: true });
-        console.log(result);
         const responseBody = result['soap-env:Envelope']['soap-env:Body']['n0:ZsvCusLoginCheckResponse'];
-        console.log(responseBody);
         response.json({
             status: responseBody?.Status?._text || 'F',
         });

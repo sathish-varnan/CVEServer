@@ -53,8 +53,6 @@ function formatInquiryDetails(data: rawInquiryData[]): InquiryData[] {
 }
 
 export default async function (request: Request, response: Response) {
-    console.log("InquiryDataHandler");
-    console.log(request.body);
     const {id} = request.body;
     const auth: string = process.env.BASE || '';
     const requestBody = getBody(id);
@@ -71,11 +69,8 @@ export default async function (request: Request, response: Response) {
             }
         );
         const result:any = convert.xml2js(SAPresponse.data, { compact: true });
-        console.log(result);
         const data = result['soap-env:Envelope']['soap-env:Body']['n0:ZsvCusInquiryDataResponse']['InquiryData']['item'];
-        console.log(data);
         const formattedData = formatInquiryDetails(data);
-        console.log(formattedData);
         response.json({
             data: formattedData,
         });

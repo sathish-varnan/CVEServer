@@ -16,8 +16,6 @@ function giveBody(id: string) {
 }
 
 export default async function (request: Request, response: Response) {
-    console.log("profileDetailsHandler");
-    console.log(request.body);
     const { id } = request.body;
     const auth: string = process.env.BASE || '';
     const requestBody = giveBody(id);
@@ -45,7 +43,6 @@ export default async function (request: Request, response: Response) {
             region: data?.Regio?._text ?? '',
             phone: data?.Telf1?._text ?? ''
         }
-        console.log(profileData);
         response.json({
             details: profileData
         });
