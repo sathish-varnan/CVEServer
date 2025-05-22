@@ -58,7 +58,6 @@ function getFormattedData(data: RawDelivery[]): DeliveryData[] {
 }
 
 export default async function (request: Request, response: Response) {
-    console.log("ListOfDeliveryDataHandler");
     const {id} = request.body;
     const auth: string = process.env.BASE || '';
     const requestBody = getBody(id);

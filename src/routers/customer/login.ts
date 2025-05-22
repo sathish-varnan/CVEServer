@@ -34,6 +34,7 @@ export default async function (request: Request, response: Response): Promise<vo
         const responseBody = result['soap-env:Envelope']['soap-env:Body']['n0:ZsvCusLoginCheckResponse'];
         response.json({
             status: responseBody?.Status?._text || 'F',
+            JWToken: ''
         });
     } catch (error: any) {
         response.status(500).json({ error: "SAP error", detail: error.message });

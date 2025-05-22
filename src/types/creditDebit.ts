@@ -1,0 +1,23 @@
+export default interface creditDebit {
+    "Vbeln": string;
+    "Fkart": string;
+    "Fktyp": string;
+    "Vbtyp": string;
+    "Waerk": string;
+    "Vkorg": string;
+    "Kalsm": string;
+    "Knumv": string;
+    "Vsbed": string;
+    "Fkdat": string;
+    "Kurrf": string;
+    "Netwr": string;
+    "Erzet": string;
+    "Erdat": string;
+    "Stwae": string;
+    "BstnkF": string;
+    "Kunag": string;
+    "Arktx": string;
+    "Matnr": string;
+    "Posnr": string;
+    "Vrkme": string;
+};

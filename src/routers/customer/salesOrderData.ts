@@ -61,7 +61,6 @@ function getFormattedData(data: rawSalesData[]): SalesOrderData[] {
 }
 
 export default async function (request: Request, response: Response) {
-    console.log("SalesOrderDataHandler");
     const {id} = request.body;
     const auth: string = process.env.BASE || '';
     const requestBody = getBody(id);
