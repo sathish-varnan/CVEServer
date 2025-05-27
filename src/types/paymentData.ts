@@ -1,0 +1,20 @@
+export default interface Payment {
+    "Mandt": string;
+    "Kunnr": string;
+    "Bukrs": string;
+    "Belnr": string;
+    "Gjahr": string;
+    "Buzei": string;
+    "Augbl": string;
+    "Wrbtr": string;
+    "Mwskz": string;
+    "Zfbdt": string;
+    "Vbeln": string;
+    "Budat": string;
+    "Bldat": string;
+    "Cpudt": string;
+    "Waers": string;
+    "Blart": string;
+    "Monat": string;
+    "RemainingDays": string;
+};

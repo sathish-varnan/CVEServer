@@ -1,0 +1,18 @@
+export default interface InvoiceData {
+    "Vbeln": string,
+    "Fkdat": string,
+    "Erdat": string,
+    "Kunrg": string,
+    "Fkart": string,
+    "Vkorg": string,
+    "Vtweg": string,
+    "Spart": string,
+    "Netwr": string,
+    "Waerk": string,
+    "Xblnr": string,
+    "Posnr": string,
+    "Matnr": string,
+    "Arktx": string,
+    "Fkimg": string,
+    "Vrkme": string,
+};
