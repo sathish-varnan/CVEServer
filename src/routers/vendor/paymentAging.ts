@@ -16,8 +16,39 @@ interface PaymentAging {
     "RefDocNo": string,
     "ItemNumber": string,
     "Supplier": string,
-    "CurrKey": string
+    "CurrKey": string,
+    "RemainingDays": string
 };
+
+function getRemainingDays(start_date: string, end_date: string): string {
+    // Parse the input dates
+    const startDate = new Date(start_date);
+    const endDate = new Date();
+    
+    // Validate the dates
+    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+        return "Invalid date format. Please use YYYY-MM-DD";
+    }
+    
+    // Calculate the difference in milliseconds
+    const diffInMs = endDate.getTime() - startDate.getTime();
+    
+    // Convert milliseconds to days
+    const diffInDays = Math.round(diffInMs / (1000 * 60 * 60 * 24));
+    
+    // Handle past dates (negative difference)
+    if (diffInDays < 0) {
+        return `${Math.abs(diffInDays)} days ago`;
+    }
+    
+    // Handle same day
+    if (diffInDays === 0) {
+        return "Today is the end date";
+    }
+    
+    // Return the remaining days
+    return `${diffInDays} day${diffInDays !== 1 ? 's' : ''} remaining`;
+}
 
 export default async function (request: Request, response: Response): Promise<void> {
     const { supplier } = request.query as {
@@ -52,7 +83,8 @@ export default async function (request: Request, response: Response): Promise<vo
                 "RefDocNo": item.RefDocNo,
                 "ItemNumber": item.ItemNumber,
                 "Supplier": item.Supplier,
-                "CurrKey": item.CurrKey
+                "CurrKey": item.CurrKey,
+                "RemainingDays": getRemainingDays(convertDateFromInt(item.DocDate), new Date().toISOString().split('T')[0])
             });
         });
 
