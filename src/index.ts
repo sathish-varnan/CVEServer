@@ -1,5 +1,5 @@
 import express, { Express } from 'express';
-import { customer, vendor } from './routers/router';
+import { customer, vendor, employee } from './routers/router';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
@@ -13,6 +13,7 @@ app.use(express.json());
 
 app.use('/customer', customer);
 app.use('/vendor', vendor);
+app.use('/employee', employee);
 
 app.listen(PORT, () => {
   console.log(`Server started listening to port ${PORT}`);
