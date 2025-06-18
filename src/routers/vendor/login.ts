@@ -8,8 +8,6 @@ export default async function (request: Request, response: Response): Promise<vo
     };
     const auth: string = process.env.BASE || '';
 
-    console.log(accountNumber, password);
-
     try {
         const SAPresponse = await axios.get(
             `http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/sap/ZSV_VENDOR_SERVICE_SRV/VendorSet('${accountNumber}')`,
@@ -29,7 +27,6 @@ export default async function (request: Request, response: Response): Promise<vo
             response.json({status: "Failure"});
         }
     } catch (error: any) {
-        console.log("SAP error: ", error);
         response.json({ status: "Failure"});
     }
 }

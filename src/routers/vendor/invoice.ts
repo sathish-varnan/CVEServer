@@ -72,7 +72,6 @@ export default async function (request: Request, response: Response): Promise<vo
 
         response.status(200).json({ "data": _invoiceArray });
     } catch (error: any) {
-        console.log("Error: ", error);
         response.status(500).json({ error: error });
     }
 }
