@@ -40,7 +40,6 @@ export default async function (request: Request, response: Response): Promise<vo
             response.status(404).json({ error: "No payslip details found." });
         }
 
-        // Normalize response to always return an array
         const payslips = Array.isArray(payslipItems) ? payslipItems : [payslipItems];
 
         const formattedPayslips = payslips.map((item: any) => ({

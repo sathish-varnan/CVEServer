@@ -35,10 +35,8 @@ export default async function (request: Request, response: Response): Promise<vo
         const xmlResponse = axiosResponse.data;
         const jsonResponse: any = convert.xml2js(xmlResponse, { compact: true });
 
-        // Extract leave details array from the response
         const leaveDetails = jsonResponse["soap-env:Envelope"]["soap-env:Body"]["n0:YsvEmpLrResponse"]["LeaveDetails"]["item"];
 
-        // Convert to cleaner JSON format
         const leaveRecords = Array.isArray(leaveDetails) 
             ? leaveDetails.map((item: any) => ({
                 EmployeeId: item.EmpId?._text ?? '',

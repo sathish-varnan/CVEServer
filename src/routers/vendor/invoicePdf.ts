@@ -6,7 +6,7 @@ export default async function (request: Request, response: Response): Promise<vo
         const invoiceNumber = request.query.invoiceNumber as string || '';
         const pdfUrl = `http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/sap/ZSV_VENDOR_SERVICE_SRV/InvoiceAdobeSet(Belnr='${invoiceNumber}')/$value`;
 
-        // Make a GET request to fetch the PDF
+
         const axiosResponse = await axios.get(pdfUrl, {
             responseType: 'stream',
             auth: {
@@ -15,11 +15,9 @@ export default async function (request: Request, response: Response): Promise<vo
             }
         });
 
-        // Set the appropriate headers for PDF response
         response.setHeader('Content-Type', 'application/pdf');
         response.setHeader('Content-Disposition', `inline; filename="invoice_${invoiceNumber}.pdf"`);
 
-        // Pipe the PDF data to the response
         axiosResponse.data.pipe(response);
 
     } catch (error) {

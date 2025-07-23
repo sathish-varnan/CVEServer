@@ -35,32 +35,25 @@ function getBody(id: string) {
 }
 
 function getRemainingDays(start_date: string, end_date: string): string {
-    // Parse the input dates
     const startDate = new Date(start_date);
     const endDate = new Date(end_date);
     
-    // Validate the dates
     if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
         return "Invalid date format. Please use YYYY-MM-DD";
     }
     
-    // Calculate the difference in milliseconds
     const diffInMs = endDate.getTime() - startDate.getTime();
     
-    // Convert milliseconds to days
     const diffInDays = Math.round(diffInMs / (1000 * 60 * 60 * 24));
-    
-    // Handle past dates (negative difference)
+
     if (diffInDays < 0) {
         return `${Math.abs(diffInDays)} days ago`;
     }
-    
-    // Handle same day
+
     if (diffInDays === 0) {
         return "Today is the end date";
     }
-    
-    // Return the remaining days
+
     return `${diffInDays} day${diffInDays !== 1 ? 's' : ''} remaining`;
 }
 
